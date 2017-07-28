@@ -1,5 +1,5 @@
 class Meetup < ApplicationRecord
-  has_many :comments
+  has_many :comments, dependent: :destroy
   belongs_to :user
   validates :title, presence: true
 end

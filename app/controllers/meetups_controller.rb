@@ -27,6 +27,12 @@ class MeetupsController < ApplicationController
     redirect_to meetups_path, notice: "Create success ."
   end
 
+  def destroy
+    @meetup = Meetup.find(params[:id])
+    @meetup.destroy
+    redirect_to meetups_path, alert: "Meetup deleted ."
+  end
+
   private
 
   def meetup_params

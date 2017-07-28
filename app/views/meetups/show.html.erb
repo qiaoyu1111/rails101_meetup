@@ -8,4 +8,4 @@
 
 <h1><%= @meetup.title %></h1>
 <hr><br>
-<p><%= @meetup.description %></p>
+<p><%= simple_format(@meetup.description) %></p>

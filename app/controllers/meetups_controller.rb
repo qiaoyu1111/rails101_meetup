@@ -1,6 +1,6 @@
 class MeetupsController < ApplicationController
   before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destroy]
-  before_action :find_group_and_check_permission, only: [:edit, :update, :destroy]
+  before_action :find_meetup_and_check_permission, only: [:edit, :update, :destroy]
 
   def index
     @meetups = Meetup.all
@@ -40,10 +40,10 @@ class MeetupsController < ApplicationController
     redirect_to meetups_path, alert: "Meetup deleted ."
   end
 
-  def find_group_and_check_permission
-    @group = Group.find(params[:id])
+  def find_meetup_and_check_permission
+    @meetup = Meetup.find(params[:id])
 
-    if current_user != @group.user
+    if current_user != @meetup.user
       redirect_to root_path, alert: "You have no permission."
     end
   end

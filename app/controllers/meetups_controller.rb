@@ -3,8 +3,22 @@ class MeetupsController < ApplicationController
     @meetups = Meetup.all
   end
 
+  def show
+    @meetup = Meetup.find(params[:id])
+  end
+
+  def edit
+    @meetup = Meetup.find(params[:id])
+  end
+
   def new
     @meetup = Meetup.new
+  end
+
+  def update
+    @meetup = Meetup.find(params[:id])
+    @meetup.update(meetup_params)
+    redirect_to meetups_path, natice: "Update success ."
   end
 
   def create

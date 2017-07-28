@@ -4,6 +4,14 @@
     <hr>
     <%= form_for @meetup do |f| %>
 
+    <% if @meetup.errors.any? %>
+    <ul>
+      <% @meetup.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
     标题
     <%= f.text_field :title %>
     <br>

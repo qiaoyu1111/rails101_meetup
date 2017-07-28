@@ -17,14 +17,20 @@ class MeetupsController < ApplicationController
 
   def update
     @meetup = Meetup.find(params[:id])
-    @meetup.update(meetup_params)
-    redirect_to meetups_path, natice: "Update success ."
+    if  @meetup.update(meetup_params)
+      redirect_to meetups_path, natice: "Update success ."
+    else
+      render :edit
+    end
   end
 
   def create
     @meetup = Meetup.new(meetup_params)
-    @meetup.save
-    redirect_to meetups_path, notice: "Create success ."
+    if @meetup.save
+      redirect_to meetups_path, notice: "Create success ."
+    else
+      render :new
+    end
   end
 
   def destroy

@@ -1,6 +1,6 @@
 class MeetupsController < ApplicationController
-  before_action :authenticate_user! , only: [:new]
-  
+  before_action :authenticate_user! , only: [:new, :create]
+
   def index
     @meetups = Meetup.all
   end
@@ -28,6 +28,7 @@ class MeetupsController < ApplicationController
 
   def create
     @meetup = Meetup.new(meetup_params)
+    @meetup.user = current_user
     if @meetup.save
       redirect_to meetups_path, notice: "Create success ."
     else

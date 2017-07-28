@@ -9,3 +9,13 @@
 <h1><%= @meetup.title %></h1>
 <hr><br>
 <p><%= simple_format(@meetup.description) %></p>
+
+<hr>
+
+<div>
+  <h2>Comments</h2>
+  <%= render @meetup.comments %>
+
+  <h3>Add a Comment:</h3>
+  <%= render "comments/form" %>
+</div>

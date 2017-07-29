@@ -19,10 +19,9 @@
      <div class="col-md-12">
        <p><%= comment.message %></p>
      </div>
-     <%= @floor%>
+     <% @floor = @floor + 1 %>
      </br>
    <% end%>
  <% end %>
-
 
  <%= render 'comments/comment_form' %>

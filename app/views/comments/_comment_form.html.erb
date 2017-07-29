@@ -1,4 +1,8 @@
-<%= form_for(Comment.new, url: meetup_comments_path(@meetup)) do |f| %>
- <%= f.text_area :message %>
- <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+
+
+<%= simple_form_for(Comment.new, url: meetup_comments_path(@meetup)) do |f| %>
+  <div class="form-group">
+    <%= f.text_area :message %>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
 <% end %>

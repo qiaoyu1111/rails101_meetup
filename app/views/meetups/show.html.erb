@@ -9,19 +9,23 @@
 <h1><%= @meetup.title %></h1>
 <hr><br>
 <p><%= simple_format(@meetup.description) %></p>
+<hr><br>
 
-<% if @meetup.comments.empty? %>
-   <p> 尚未有人留言 </p>
- <% else %>
-   <% @floor = 1 %>
-   <% @meetup.comments.each do |comment| %>
-     <%= @floor %>樓
-     <div class="col-md-12">
-       <p><%= comment.message %></p>
-     </div>
-     <% @floor = @floor + 1 %>
-     </br>
-   <% end%>
- <% end %>
+<div>
+  <% if @meetup.comments.empty? %>
+     <p> 尚未有人留言 </p>
+   <% else %>
+     <% @floor = 1 %>
+     <% @meetup.comments.each do |comment| %>
+       <%= @floor %>樓
+       <div class="col-md-12">
+         <p><%= comment.message %></p>
+       </div>
+       <% @floor = @floor + 1 %>
+       </br>
+     <% end%>
+   <% end %>
+   <hr>
+ </div>
 
  <%= render 'comments/comment_form' %>

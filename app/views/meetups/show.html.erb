@@ -1,11 +1,19 @@
-
-
-  <div class="group">
-      <% if current_user && current_user == @meetup.user %>
-        <%= link_to("Edit", edit_meetup_path(@meetup), class: "btn btn-primary pull-right")%>
-      <% end %>
-  </div>
+<div class="group">
+    <% if current_user && current_user == @meetup.user %>
+      <%= link_to("Edit", edit_meetup_path(@meetup), class: "btn btn-primary pull-right")%>
+    <% end %>
+</div>
 
 <h1><%= @meetup.title %></h1>
 <hr><br>
 <p><%= simple_format(@meetup.description) %></p>
+<hr><br>
+
+<div class="comments">
+  <h2>Comments</h2>
+  <%= render @meetup.comments %>
+  <%= render "comments/comment_html" %>
+
+  <h3>Sdd a Comment:</h3>
+  <%= render "comments/form" %>
+</div>
